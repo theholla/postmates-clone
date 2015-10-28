@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                tools:context="com.epicodus.postmatesclone.ui.AddProduct">
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/companyName"
+        android:layout_marginTop="98dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:hint="Company"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/productName"
+        android:layout_below="@+id/companyName"
+        android:layout_alignLeft="@+id/companyName"
+        android:layout_alignStart="@+id/companyName"
+        android:layout_marginTop="22dp"
+        android:layout_alignRight="@+id/companyName"
+        android:layout_alignEnd="@+id/companyName"
+        android:hint="Product Name"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/productPrice"
+        android:hint="Price"
+        android:layout_below="@+id/productName"
+        android:layout_alignLeft="@+id/productName"
+        android:layout_alignStart="@+id/productName"
+        android:layout_marginTop="19dp"
+        android:layout_alignRight="@+id/productName"
+        android:layout_alignEnd="@+id/productName"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add New Product"
+        android:id="@+id/newProduct"
+        android:layout_marginTop="23dp"
+        android:layout_below="@+id/productPrice"
+        android:layout_alignRight="@+id/productPrice"
+        android:layout_alignEnd="@+id/productPrice"/>
+</RelativeLayout>
