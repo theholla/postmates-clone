@@ -1,14 +1,17 @@
 package com.epicodus.postmatesclone.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.epicodus.postmatesclone.R;
 import com.epicodus.postmatesclone.models.Product;
+import com.epicodus.postmatesclone.ui.CheckoutActivity;
 import com.epicodus.postmatesclone.ui.CustomerActivity;
 
 import java.lang.reflect.Array;
@@ -20,6 +23,7 @@ import java.util.ArrayList;
 public class ProductAdapter extends BaseAdapter {
     private Context mContext;
     private ArrayList<Product> mProducts;
+
 
     public ProductAdapter(Context context, ArrayList<Product> products){
         mProducts = products;
@@ -51,16 +55,25 @@ public class ProductAdapter extends BaseAdapter {
             holder.companyNameLabel = (TextView) convertView.findViewById(R.id.companyName);
             holder.productNameLabel = (TextView) convertView.findViewById(R.id.productName);
             holder.priceNameLabel = (TextView) convertView.findViewById(R.id.productPrice);
+            holder.addItemButton = (Button) convertView.findViewById(R.id.addItemButton);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Product product = mProducts.get(position);
+        final Product product = mProducts.get(position);
 
         holder.companyNameLabel.setText(product.getCompany());
         holder.productNameLabel.setText(product.getProductName());
         holder.priceNameLabel.setText(product.getPrice() + "");
+        holder.addItemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, CheckoutActivity.class);
+                intent.putExtra("product", product.getProductName());
+                mContext.startActivity(intent);
+            }
+        });
 
         return convertView;
     }
@@ -69,6 +82,7 @@ public class ProductAdapter extends BaseAdapter {
         TextView companyNameLabel;
         TextView productNameLabel;
         TextView priceNameLabel;
+        Button addItemButton;
     }
 
 }

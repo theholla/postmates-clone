@@ -70,4 +70,11 @@ public class Product extends Model {
                 .from(Product.class)
                 .execute();
     }
+
+    public static Product find(String product) {
+        return new Select()
+                .from(Product.class)
+                .where("ProductName = ?", product)
+                .executeSingle();
+    }
 }

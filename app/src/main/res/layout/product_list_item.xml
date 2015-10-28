@@ -21,13 +21,15 @@
         android:layout_below="@+id/companyName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:layout_toLeftOf="@+id/productPrice"
+        android:layout_toStartOf="@+id/productPrice"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add"
-        android:id="@+id/addProductButton"
+        android:id="@+id/addItemButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
@@ -38,8 +40,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="$$"
         android:id="@+id/productPrice"
-        android:layout_alignBottom="@+id/addProductButton"
-        android:layout_toLeftOf="@+id/addProductButton"
-        android:layout_toStartOf="@+id/addProductButton"
+        android:layout_alignBottom="@+id/addItemButton"
+        android:layout_toLeftOf="@+id/addItemButton"
+        android:layout_toStartOf="@+id/addItemButton"
         android:layout_marginRight="10dp"/>
 </RelativeLayout>

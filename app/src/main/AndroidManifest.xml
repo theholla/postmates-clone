@@ -49,6 +49,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.postmatesclone.ui.MainActivity" />
         </activity>
+        <activity
+            android:name=".ui.CheckoutActivity"
+            android:label="@string/title_activity_checkout"
+            android:parentActivityName=".ui.CustomerActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.postmatesclone.ui.CustomerActivity" />
+        </activity>
     </application>
 
 </manifest>
