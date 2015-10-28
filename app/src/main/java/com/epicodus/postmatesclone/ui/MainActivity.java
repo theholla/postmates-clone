@@ -3,6 +3,7 @@ package com.epicodus.postmatesclone.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceScreen;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -36,9 +37,12 @@ public class MainActivity extends AppCompatActivity {
         mRegisterButton = (Button) findViewById(R.id.registerButton);
         //mCompanyLoginButton = (Button) findViewById(R.id.companyLoginButton);
 
-        if(!isRegistered()) {
-            Intent intent = new Intent(this, RegisterActivity.class);
+        String username = mPreferences.getString("username", null);
+        if(username != null) {
+            Intent intent = new Intent(this, CustomerActivity.class);
             startActivity(intent);
+        } else {
+            Toast.makeText(this, "PLEASE LOGIN", Toast.LENGTH_LONG).show();
         }
 
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
@@ -51,44 +55,31 @@ public class MainActivity extends AppCompatActivity {
 
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String username = mUsernameInput.getText().toString();
-                String password = mPasswordInput.getText().toString();
-                CustomerUser currentUser = CustomerUser.find(username, password);
-                if (currentUser != null){
-                    Toast.makeText(MainActivity.this, "WORKS!!", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(MainActivity.this, "SOMETHING WENT WRONG!!", Toast.LENGTH_LONG).show();
+                @Override
+                public void onClick(View v) {
+                    String username = mUsernameInput.getText().toString();
+                    String password = mPasswordInput.getText().toString();
+                    CustomerUser currentUser = CustomerUser.find(username, password);
+                    if (currentUser != null){
+                        setUser(username, password);
+                        Toast.makeText(MainActivity.this, "WORKS!!", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(MainActivity.this, "USERNAME OR PASSWORD WRONG!!", Toast.LENGTH_LONG).show();
+                    }
                 }
-            }
         });
 
 
     }
 
-    private boolean isRegistered() {
-        String username = mPreferences.getString("username", null);
-        String password = mPreferences.getString("password", null);
-        if(username == null) {
-            return false;
-        } else {
-            setUser(username, password);
-            return true;
-        }
-    }
 
     private void setUser(String username, String password) {
-        CustomerUser user = CustomerUser.find(username, password);
-        if (user != null) {
-            mUser = user;
-        } else {
-            mUser = new CustomerUser(username, password);
-            mUser.save();
-        }
-        Toast.makeText(this, "Hello " + mUser.getName(), Toast.LENGTH_LONG).show();
+        SharedPreferences.Editor editor = mPreferences.edit();
+        editor.putString("username", username);
+        editor.putString("password", password);
+        editor.commit();
     }
 
 
