@@ -1,6 +1,8 @@
 package com.epicodus.postmatesclone.ui;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceScreen;
@@ -66,7 +68,11 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
                         startActivity(intent);
                     } else {
-                        Toast.makeText(MainActivity.this, "USERNAME OR PASSWORD WRONG!!", Toast.LENGTH_LONG).show();
+                        AlertDialog show = new AlertDialog.Builder(MainActivity.this)
+                                .setTitle("Message")
+                                .setMessage("Error: username or password wrong")
+                                .setNeutralButton("OK", null)
+                                .show();
                     }
                 }
         });

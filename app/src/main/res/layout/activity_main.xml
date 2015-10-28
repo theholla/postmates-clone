@@ -56,14 +56,4 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Error Message"
-        android:id="@+id/errorMessage"
-        android:layout_below="@+id/loginButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="52dp"
-        android:textColor="@android:color/holo_red_dark"/>
-
 </RelativeLayout>
