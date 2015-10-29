@@ -14,4 +14,21 @@
         android:layout_height="wrap_content"
         android:id="@+id/displayProduct"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Checkout"
+        android:id="@+id/checkoutButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Total"
+        android:id="@+id/totalPrice"
+        android:layout_above="@+id/checkoutButton"
+        android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>
