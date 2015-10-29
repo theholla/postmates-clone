@@ -1,9 +1,12 @@
 package com.epicodus.postmatesclone.ui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.epicodus.postmatesclone.R;
@@ -21,6 +24,7 @@ public class CheckoutActivity extends AppCompatActivity {
     private Product mProduct;
     private TextView displayProductName;
     private TextView mTotalPrice;
+    private Button mCheckoutButton;
     //private ArrayList<Product> mAllProducts;
 
 
@@ -39,23 +43,44 @@ public class CheckoutActivity extends AppCompatActivity {
         order.save();
 
         displayProductName = (TextView) findViewById(R.id.displayProduct);
-        displayProductName.setText(product);
+        mCheckoutButton = (Button) findViewById(R.id.checkoutButton);
+        displayProductName.setText(getListProducts().get(0));
 
         mTotalPrice = (TextView) findViewById(R.id.totalPrice);
-        mTotalPrice.setText(getTotal() + "");
+        mTotalPrice.setText("Total: " + getTotal());
+
+        mCheckoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Order.deleteOrder();
+                Intent intent = new Intent(CheckoutActivity.this, SuccessActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
     public int getTotal(){
         List<Product> productList = new ArrayList<>();
         productList = Order.getProducts();
-        int firstPrice = productList.get(0).getPrice();
         Integer totalPrice = 0;
 
         for(Product product : productList){
             totalPrice += product.getPrice();
         }
         return totalPrice;
+    }
+
+    public List<String> getListProducts(){
+        List<Product> productList = new ArrayList<>();
+        productList = Order.getProducts();
+        List<String> productNames;
+        productNames = new ArrayList<>();
+        for(Product product : productList){
+            productNames.add(product.getProductName());
+        }
+
+        return productNames;
     }
 
 

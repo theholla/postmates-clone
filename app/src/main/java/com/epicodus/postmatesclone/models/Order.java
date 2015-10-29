@@ -3,6 +3,7 @@ package com.epicodus.postmatesclone.models;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
 
 import java.util.ArrayList;
@@ -34,6 +35,12 @@ public class Order extends Model {
         return new Select()
             .from(Order.class)
             .execute();
+    }
+
+    public static void deleteOrder() {
+               new Delete()
+               .from(Order.class)
+                .execute();
     }
 
     public static List<Product> getProducts(){

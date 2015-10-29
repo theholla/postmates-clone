@@ -57,6 +57,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.postmatesclone.ui.CustomerActivity" />
         </activity>
+        <activity
+            android:name=".ui.SuccessActivity"
+            android:label="@string/title_activity_success" >
+        </activity>
     </application>
 
 </manifest>
