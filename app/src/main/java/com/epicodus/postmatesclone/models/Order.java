@@ -56,5 +56,18 @@ public class Order extends Model {
         return allProducts;
     }
 
+//    public static List<Product> getProductArray(){
+//        List<Order> allOrders;
+//        allOrders = new ArrayList<>();
+//        allOrders = Order.getOrder();
+//
+//        List<Product> allProducts;
+//        allProducts = new ArrayList<>();
+//        for (Order order : allOrders){
+//            allProducts.add(order.getProduct());
+//        }
+//        return allProducts;
+//    }
+
 
  }

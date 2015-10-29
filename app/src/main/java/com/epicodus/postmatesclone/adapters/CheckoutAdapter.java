@@ -1,29 +1,25 @@
 package com.epicodus.postmatesclone.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.epicodus.postmatesclone.R;
 import com.epicodus.postmatesclone.models.Product;
-import com.epicodus.postmatesclone.ui.CheckoutActivity;
 
 import java.util.ArrayList;
 
 /**
- * Created by Guest on 10/28/15.
+ * Created by Guest on 10/29/15.
  */
-public class ProductAdapter extends BaseAdapter {
+public class CheckoutAdapter extends BaseAdapter {
     private Context mContext;
     private ArrayList<Product> mProducts;
 
-
-    public ProductAdapter(Context context, ArrayList<Product> products){
+    public CheckoutAdapter(Context context, ArrayList<Product> products){
         mProducts = products;
         mContext = context;
     }
@@ -48,39 +44,26 @@ public class ProductAdapter extends BaseAdapter {
         ViewHolder holder;
 
         if(convertView == null) {
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.product_list_item, null);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.checkout_list_item, null);
             holder = new ViewHolder();
-            holder.companyNameLabel = (TextView) convertView.findViewById(R.id.companyName);
             holder.productNameLabel = (TextView) convertView.findViewById(R.id.productNameLabel);
-            holder.priceNameLabel = (TextView) convertView.findViewById(R.id.productPriceLabel);
-            holder.addItemButton = (Button) convertView.findViewById(R.id.addItemButton);
+            holder.productPriceLabel = (TextView) convertView.findViewById(R.id.productPriceLabel);
+
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        final Product product = mProducts.get(position);
+        Product product = mProducts.get(position);
 
-        holder.companyNameLabel.setText(product.getCompany());
         holder.productNameLabel.setText(product.getProductName());
-        holder.priceNameLabel.setText(product.getPrice() + "");
-        holder.addItemButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, CheckoutActivity.class);
-                intent.putExtra("product", product.getProductName());
-                mContext.startActivity(intent);
-            }
-        });
+        holder.productPriceLabel.setText("$" + product.getPrice());
 
         return convertView;
     }
 
     private static class ViewHolder {
-        TextView companyNameLabel;
         TextView productNameLabel;
-        TextView priceNameLabel;
-        Button addItemButton;
+        TextView productPriceLabel;
     }
-
 }

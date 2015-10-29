@@ -20,7 +20,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/productName"
+        android:id="@+id/productNameLabel"
         android:layout_below="@+id/companyName"
         android:layout_alignLeft="@+id/companyName"
         android:layout_alignStart="@+id/companyName"
@@ -32,14 +32,14 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/productPrice"
+        android:id="@+id/productPriceLabel"
         android:hint="Price"
-        android:layout_below="@+id/productName"
-        android:layout_alignLeft="@+id/productName"
-        android:layout_alignStart="@+id/productName"
+        android:layout_below="@+id/productNameLabel"
+        android:layout_alignLeft="@+id/productNameLabel"
+        android:layout_alignStart="@+id/productNameLabel"
         android:layout_marginTop="19dp"
-        android:layout_alignRight="@+id/productName"
-        android:layout_alignEnd="@+id/productName"/>
+        android:layout_alignRight="@+id/productNameLabel"
+        android:layout_alignEnd="@+id/productNameLabel"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
         android:text="Add New Product"
         android:id="@+id/newProduct"
         android:layout_marginTop="23dp"
-        android:layout_below="@+id/productPrice"
-        android:layout_alignRight="@+id/productPrice"
-        android:layout_alignEnd="@+id/productPrice"/>
+        android:layout_below="@+id/productPriceLabel"
+        android:layout_alignRight="@+id/productPriceLabel"
+        android:layout_alignEnd="@+id/productPriceLabel"/>
 </RelativeLayout>

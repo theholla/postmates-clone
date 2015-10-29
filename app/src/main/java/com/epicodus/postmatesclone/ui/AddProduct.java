@@ -3,8 +3,6 @@ package com.epicodus.postmatesclone.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,8 +23,8 @@ public class AddProduct extends AppCompatActivity {
         setContentView(R.layout.activity_add_product);
 
         mCompanyName = (EditText) findViewById(R.id.companyName);
-        mProductName = (EditText) findViewById(R.id.productName);
-        mProductPrice = (EditText) findViewById(R.id.productPrice);
+        mProductName = (EditText) findViewById(R.id.productNameLabel);
+        mProductPrice = (EditText) findViewById(R.id.productPriceLabel);
         mNewProduct = (Button) findViewById(R.id.newProduct);
 
         mNewProduct.setOnClickListener(new View.OnClickListener() {

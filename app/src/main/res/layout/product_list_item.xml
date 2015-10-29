@@ -17,13 +17,13 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Product Name"
-        android:id="@+id/productName"
+        android:id="@+id/productNameLabel"
         android:layout_below="@+id/companyName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
-        android:layout_toLeftOf="@+id/productPrice"
-        android:layout_toStartOf="@+id/productPrice"/>
+        android:layout_toLeftOf="@+id/productPriceLabel"
+        android:layout_toStartOf="@+id/productPriceLabel"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="$$"
-        android:id="@+id/productPrice"
+        android:id="@+id/productPriceLabel"
         android:layout_alignBottom="@+id/addItemButton"
         android:layout_toLeftOf="@+id/addItemButton"
         android:layout_toStartOf="@+id/addItemButton"

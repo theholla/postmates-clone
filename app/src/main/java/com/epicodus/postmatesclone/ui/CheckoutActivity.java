@@ -1,15 +1,18 @@
 package com.epicodus.postmatesclone.ui;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.epicodus.postmatesclone.R;
+import com.epicodus.postmatesclone.adapters.CheckoutAdapter;
 import com.epicodus.postmatesclone.models.Order;
 import com.epicodus.postmatesclone.models.Product;
 
@@ -18,14 +21,17 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CheckoutActivity extends AppCompatActivity {
+public class CheckoutActivity extends ListActivity {
 
     //private ArrayList<Product> mOrder;
     private Product mProduct;
     private TextView displayProductName;
     private TextView mTotalPrice;
     private Button mCheckoutButton;
-    //private ArrayList<Product> mAllProducts;
+
+    //for the Adapter
+    private ArrayList<Product> mAllProducts;
+    private CheckoutAdapter mAdapter;
 
 
     @Override
@@ -42,9 +48,8 @@ public class CheckoutActivity extends AppCompatActivity {
         Order order = new Order(mProduct);
         order.save();
 
-        displayProductName = (TextView) findViewById(R.id.displayProduct);
+        displayProductName = (TextView) findViewById(R.id.displayOrder);
         mCheckoutButton = (Button) findViewById(R.id.checkoutButton);
-        displayProductName.setText(getListProducts().get(0));
 
         mTotalPrice = (TextView) findViewById(R.id.totalPrice);
         mTotalPrice.setText("Total: " + getTotal());
@@ -57,6 +62,11 @@ public class CheckoutActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        mAllProducts = (ArrayList) Order.getProducts();
+        mAdapter = new CheckoutAdapter(this, mAllProducts);
+        setListAdapter(mAdapter);
+
 
     }
 
@@ -82,6 +92,7 @@ public class CheckoutActivity extends AppCompatActivity {
 
         return productNames;
     }
+
 
 
 }

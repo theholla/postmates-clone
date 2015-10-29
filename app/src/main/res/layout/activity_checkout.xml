@@ -9,10 +9,10 @@
                 tools:context="com.epicodus.postmatesclone.ui.CheckoutActivity">
 
     <TextView
-        android:text="Hello"
+        android:text="Here&apos;s your order:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/displayProduct"/>
+        android:id="@+id/displayOrder"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -29,6 +29,18 @@
         android:text="Total"
         android:id="@+id/totalPrice"
         android:layout_above="@+id/checkoutButton"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"/>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@android:id/list"
+        android:layout_below="@+id/displayOrder"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/totalPrice"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
 
 </RelativeLayout>
