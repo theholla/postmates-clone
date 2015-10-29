@@ -32,7 +32,7 @@ public class AddProduct extends AppCompatActivity {
             public void onClick(View v) {
                 String company = mCompanyName.getText().toString();
                 String productName = mProductName.getText().toString();
-                int productPrice = Integer.parseInt(mProductPrice.getText().toString());
+                int productPrice = Integer.parseInt(mProductPrice.getText().toString().replaceAll("[^\\w\\s]",""));
 
                 Product newProduct = new Product(company, productName, productPrice);
                 newProduct.save();

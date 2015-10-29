@@ -9,10 +9,11 @@
                 tools:context="com.epicodus.postmatesclone.ui.CustomerActivity">
 
     <TextView
-        android:text="CUSTOMER ACTIVITY"
+        android:text="ITEMS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/customerText"/>
+        android:id="@+id/customerText"
+        android:layout_marginBottom="10dp"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -41,6 +42,7 @@
         android:layout_toLeftOf="@+id/logoutButton"
         android:layout_toStartOf="@+id/logoutButton"
         android:layout_marginRight="78dp"
-        android:layout_marginEnd="78dp"/>
+        android:layout_marginEnd="78dp"
+        android:background="@android:color/holo_green_light"/>
 
 </RelativeLayout>
