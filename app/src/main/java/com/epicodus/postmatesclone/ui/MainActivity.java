@@ -66,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
                         setUser(username, password);
                         Toast.makeText(MainActivity.this, "WORKS!!", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                     } else {
                         AlertDialog show = new AlertDialog.Builder(MainActivity.this)

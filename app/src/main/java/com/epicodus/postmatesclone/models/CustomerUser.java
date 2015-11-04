@@ -5,10 +5,6 @@ import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Select;
 
-/**
- * Created by Guest on 10/28/15.
- */
-
 @Table (name = "CustomerUser", id = "_id")
 public class CustomerUser extends Model {
 
