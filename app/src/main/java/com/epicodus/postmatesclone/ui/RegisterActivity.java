@@ -3,7 +3,6 @@ package com.epicodus.postmatesclone.ui;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +20,6 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText mNewUsername;
     private EditText mNewPassword;
     private Button mRegisterButton;
-    private SharedPreferences mPreferences;
     private CustomerUser newUser;
 
     @Override
@@ -32,7 +30,6 @@ public class RegisterActivity extends AppCompatActivity {
         mNewUsername = (EditText) findViewById(R.id.newUsername);
         mNewPassword = (EditText) findViewById(R.id.newPassword);
         mRegisterButton = (Button) findViewById(R.id.loginButton);
-        mPreferences = getApplicationContext().getSharedPreferences("postmates", Context.MODE_PRIVATE);
 
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
