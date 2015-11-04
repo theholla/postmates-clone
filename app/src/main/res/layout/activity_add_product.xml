@@ -6,7 +6,7 @@
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:paddingBottom="@dimen/activity_vertical_margin"
-                tools:context="com.epicodus.postmatesclone.ui.AddProduct">
+                tools:context="com.epicodus.postmatesclone.ui.AddProductActivity">
 
     <EditText
         android:layout_width="250dp"

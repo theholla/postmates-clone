@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.epicodus.postmatesclone" >
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="PostmatesApplication"
+        android:name=".PostmatesApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -20,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.CustomerActivity"
+            android:name=".ui.StoreActivity"
             android:label="@string/title_activity_main_customer"
             android:parentActivityName=".ui.MainActivity" >
             <meta-data
@@ -54,14 +55,22 @@
         <activity
             android:name=".ui.CheckoutActivity"
             android:label="@string/title_activity_checkout"
-            android:parentActivityName=".ui.CustomerActivity" >
+            android:parentActivityName=".ui.StoreActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.postmatesclone.ui.CustomerActivity" />
+                android:value=".ui.StoreActivity" />
         </activity>
         <activity
             android:name=".ui.SuccessActivity"
             android:label="@string/title_activity_success" >
+        </activity>
+        <activity
+            android:name=".ui.CompanyLoginActivity"
+            android:label="@string/title_activity_company_login"
+            android:parentActivityName=".ui.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.postmatesclone.ui.MainActivity" />
         </activity>
     </application>
 

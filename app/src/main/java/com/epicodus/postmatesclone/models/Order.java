@@ -9,9 +9,6 @@ import com.activeandroid.query.Select;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Guest on 10/29/15.
- */
 @Table(name = "Orders", id = "_id")
 public class Order extends Model {
 

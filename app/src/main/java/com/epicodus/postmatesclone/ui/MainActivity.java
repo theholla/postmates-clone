@@ -1,8 +1,6 @@
 package com.epicodus.postmatesclone.ui;
 
 import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.epicodus.postmatesclone.R;
-import com.epicodus.postmatesclone.models.CustomerUser;
+import com.facebook.stetho.Stetho;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -23,16 +21,16 @@ public class MainActivity extends AppCompatActivity {
     private Button mLoginButton;
     private Button mRegisterButton;
     private Button mCompanyLoginButton;
-    private CustomerUser mUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Stetho.initializeWithDefaults(this);
 
         mUsernameInput = (EditText) findViewById(R.id.newUsername);
         mPasswordInput = (EditText) findViewById(R.id.newPassword);
-        mLoginButton = (Button) findViewById(R.id.loginButton);
+        mLoginButton = (Button) findViewById(R.id.btnRegisterCustomer);
         mRegisterButton = (Button) findViewById(R.id.registerButton);
         //mCompanyLoginButton = (Button) findViewById(R.id.companyLoginButton);
 
@@ -46,27 +44,27 @@ public class MainActivity extends AppCompatActivity {
 
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String username = mUsernameInput.getText().toString();
-                    String password = mPasswordInput.getText().toString();
-                    ParseUser.logInInBackground(username, password, new LogInCallback() {
-                        @Override
-                        public void done(ParseUser user, ParseException e) {
-                            if (user != null){
-                                Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
-                            } else {
-                                AlertDialog show = new AlertDialog.Builder(MainActivity.this)
-                                        .setTitle("Message")
-                                        .setMessage("Error: username or password wrong")
-                                        .setNeutralButton("OK", null)
-                                        .show();
-                            }
+            @Override
+            public void onClick(View v) {
+                String username = mUsernameInput.getText().toString();
+                String password = mPasswordInput.getText().toString();
+                ParseUser.logInInBackground(username, password, new LogInCallback() {
+                    @Override
+                    public void done(ParseUser user, ParseException e) {
+                        if (user != null) {
+                            Intent intent = new Intent(MainActivity.this, StoreActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                        } else {
+                            AlertDialog show = new AlertDialog.Builder(MainActivity.this)
+                                    .setTitle("Message")
+                                    .setMessage("Error: username or password wrong")
+                                    .setNeutralButton("OK", null)
+                                    .show();
                         }
-                    });
+                    }
+                });
                 }
         });
 

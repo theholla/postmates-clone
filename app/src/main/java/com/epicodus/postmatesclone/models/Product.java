@@ -7,10 +7,6 @@ import com.activeandroid.query.Select;
 
 import java.util.List;
 
-/**
- * Created by Guest on 10/28/15.
- */
-
 @Table(name = "Product", id = "_id")
 public class Product extends Model {
 

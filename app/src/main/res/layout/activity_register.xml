@@ -20,11 +20,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register"
-        android:id="@+id/loginButton"
+        android:text="REGISTER CUSTOMER"
+        android:id="@+id/btnRegisterCustomer"
         android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/newPassword"
-        android:layout_alignEnd="@+id/newPassword"/>
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
 
     <EditText
         android:layout_width="250dp"
@@ -40,9 +40,18 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="REGISTER"
+        android:text="REGISTRATION"
         android:id="@+id/registerText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="REGISTER COMPANY"
+        android:id="@+id/btnRegisterCompany"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
 </RelativeLayout>
