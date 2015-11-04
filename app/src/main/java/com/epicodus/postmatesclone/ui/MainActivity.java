@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.epicodus.postmatesclone.R;
 import com.facebook.stetho.Stetho;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mLoginButton;
     private Button mRegisterButton;
     private Button mCompanyLoginButton;
+    private TextView mResetPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
         mUsernameInput = (EditText) findViewById(R.id.newUsername);
         mPasswordInput = (EditText) findViewById(R.id.newPassword);
-        mLoginButton = (Button) findViewById(R.id.btnRegisterCustomer);
-        mRegisterButton = (Button) findViewById(R.id.registerButton);
+        mLoginButton = (Button) findViewById(R.id.btnLogin);
+        mRegisterButton = (Button) findViewById(R.id.btnRegisterPage);
         //mCompanyLoginButton = (Button) findViewById(R.id.companyLoginButton);
+        mResetPassword = (TextView) findViewById(R.id.txtResetPassword);
 
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,9 +69,5 @@ public class MainActivity extends AppCompatActivity {
                 });
                 }
         });
-
-
     }
-
-
 }

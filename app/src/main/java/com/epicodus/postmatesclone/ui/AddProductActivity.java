@@ -30,6 +30,7 @@ public class AddProductActivity extends AppCompatActivity {
         mNewProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // TODO: Add logic for error handling if fields are blank
                 String company = mCompanyName.getText().toString();
                 String productName = mProductName.getText().toString();
                 int productPrice = Integer.parseInt(mProductPrice.getText().toString().replaceAll("[^\\w\\s]",""));

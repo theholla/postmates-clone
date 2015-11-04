@@ -36,11 +36,13 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String username = mNewUsername.getText().toString().trim();
                 String password = mNewPassword.getText().toString().trim();
+                String role = "customer";
 
                 if (username.isEmpty() || password.isEmpty()) {
                     showErrorDialog();
                 } else {
                     ParseUser newUser = getParseUser(username, password);
+                    newUser.put("role", role);
 
                     newUser.signUpInBackground(new SignUpCallback() {
                         @Override
@@ -65,11 +67,13 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String username = mNewUsername.getText().toString().trim();
                 String password = mNewPassword.getText().toString().trim();
+                String role = "admin";
 
                 if (username.isEmpty() || password.isEmpty()) {
                     showErrorDialog();
                 } else {
                     ParseUser newUser = getParseUser(username, password);
+                    newUser.put("role", role);
 
                     newUser.signUpInBackground(new SignUpCallback() {
                         @Override
@@ -78,7 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                             if (e == null) {
                                 // Success!
-                                Intent intent = new Intent(RegisterActivity.this, StoreActivity.class);
+                                Intent intent = new Intent(RegisterActivity.this, CompanyActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);

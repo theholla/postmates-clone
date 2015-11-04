@@ -45,7 +45,7 @@
                 android:value="com.epicodus.postmatesclone.ui.MainActivity" />
         </activity>
         <activity
-            android:name=".ui.AddProduct"
+            android:name=".ui.AddProductActivity"
             android:label="@string/title_activity_add_product"
             android:parentActivityName=".ui.MainActivity" >
             <meta-data
@@ -67,6 +67,14 @@
         <activity
             android:name=".ui.CompanyLoginActivity"
             android:label="@string/title_activity_company_login"
+            android:parentActivityName=".ui.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.postmatesclone.ui.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.CompanyActivity"
+            android:label="@string/title_activity_company"
             android:parentActivityName=".ui.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

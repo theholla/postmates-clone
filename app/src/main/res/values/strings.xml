@@ -9,4 +9,5 @@
     <string name="title_activity_checkout">CheckoutActivity</string>
     <string name="title_activity_success">SuccessActivity</string>
     <string name="title_activity_company_login">Company Login</string>
+    <string name="title_activity_company">Company Activity</string>
 </resources>
