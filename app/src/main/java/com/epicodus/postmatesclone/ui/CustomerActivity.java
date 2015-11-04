@@ -9,6 +9,7 @@ import android.widget.Button;
 import com.epicodus.postmatesclone.R;
 import com.epicodus.postmatesclone.adapters.ProductAdapter;
 import com.epicodus.postmatesclone.models.Product;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 
@@ -35,7 +36,9 @@ public class CustomerActivity extends ListActivity {
         mLogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-////               Destroy session
+                ParseUser.logOut();
+                ParseUser currentUser = ParseUser.getCurrentUser();
+
                 Intent intent = new Intent(CustomerActivity.this, MainActivity.class);
                 startActivity(intent);
             }
@@ -48,8 +51,6 @@ public class CustomerActivity extends ListActivity {
                 startActivity(intent);
             }
         });
-
     }
-
 
 }
