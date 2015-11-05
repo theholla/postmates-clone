@@ -33,7 +33,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:background="@android:color/holo_green_dark"/>
+        android:background="@android:color/holo_green_dark"
+        android:visibility="invisible"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -45,4 +46,15 @@
         android:layout_toLeftOf="@+id/addItemButton"
         android:layout_toStartOf="@+id/addItemButton"
         android:layout_marginRight="10dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit"
+        android:id="@+id/btnEditButton"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/productPriceLabel"
+        android:layout_toEndOf="@+id/productPriceLabel"
+        android:background="@android:color/holo_green_dark"
+        android:visibility="invisible"/>
 </RelativeLayout>

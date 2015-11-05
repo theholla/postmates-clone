@@ -72,14 +72,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.postmatesclone.ui.MainActivity" />
         </activity>
-        <activity
-            android:name=".ui.CompanyActivity"
-            android:label="@string/title_activity_company"
-            android:parentActivityName=".ui.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.postmatesclone.ui.MainActivity" />
-        </activity>
     </application>
 
 </manifest>

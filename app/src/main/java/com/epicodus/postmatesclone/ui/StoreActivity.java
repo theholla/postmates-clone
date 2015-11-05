@@ -29,13 +29,25 @@ public class StoreActivity extends ListActivity {
 
         mLogoutButton = (Button) findViewById(R.id.logoutButton);
         mAddProduct = (Button) findViewById(R.id.btnAddProduct);
+        mAddProduct.setVisibility(View.INVISIBLE);
 
         mProducts = (ArrayList) Product.all();
         mAdapter = new ProductAdapter(this, mProducts);
         setListAdapter(mAdapter);
 
+        // TODO: Add arraylist of company's products
+
         ParseUser currentUser = ParseUser.getCurrentUser();
         String role = currentUser.getString("role");
+
+        if (role.equals("admin")) {
+            mAddProduct.setVisibility(View.VISIBLE);
+
+        } else if (role.equals("customer")) {
+            // TODO: show all products
+        } else {
+            // TODO: show all products but no add to cart option
+        }
 
 
         mLogoutButton.setOnClickListener(new View.OnClickListener() {
@@ -57,5 +69,4 @@ public class StoreActivity extends ListActivity {
             }
         });
     }
-
 }

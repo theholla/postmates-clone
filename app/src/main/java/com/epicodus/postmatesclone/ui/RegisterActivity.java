@@ -38,27 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String password = mNewPassword.getText().toString().trim();
                 String role = "customer";
 
-                if (username.isEmpty() || password.isEmpty()) {
-                    showErrorDialog();
-                } else {
-                    ParseUser newUser = getParseUser(username, password);
-                    newUser.put("role", role);
-
-                    newUser.signUpInBackground(new SignUpCallback() {
-                        @Override
-                        public void done(ParseException e) {
-                            setProgressBarIndeterminateVisibility(false);
-
-                            if (e == null) {
-                                // Success!
-                                Intent intent = new Intent(RegisterActivity.this, StoreActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
-                            } else showErrorDialog();
-                        }
-                    });
-                }
+                registerUser(username, password, role);
             }
         });
 
@@ -69,29 +49,33 @@ public class RegisterActivity extends AppCompatActivity {
                 String password = mNewPassword.getText().toString().trim();
                 String role = "admin";
 
-                if (username.isEmpty() || password.isEmpty()) {
-                    showErrorDialog();
-                } else {
-                    ParseUser newUser = getParseUser(username, password);
-                    newUser.put("role", role);
-
-                    newUser.signUpInBackground(new SignUpCallback() {
-                        @Override
-                        public void done(ParseException e) {
-                            setProgressBarIndeterminateVisibility(false);
-
-                            if (e == null) {
-                                // Success!
-                                Intent intent = new Intent(RegisterActivity.this, CompanyActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
-                            } else showErrorDialog();
-                        }
-                    });
-                }
+                registerUser(username, password, role);
             }
         });
+    }
+
+    private void registerUser(String username, String password, String role) {
+        if (username.isEmpty() || password.isEmpty()) {
+            showErrorDialog();
+        } else {
+            ParseUser newUser = getParseUser(username, password);
+            newUser.put("role", role);
+
+            newUser.signUpInBackground(new SignUpCallback() {
+                @Override
+                public void done(ParseException e) {
+                    setProgressBarIndeterminateVisibility(false);
+
+                    if (e == null) {
+                        // Success!
+                        Intent intent = new Intent(RegisterActivity.this, StoreActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    } else showErrorDialog();
+                }
+            });
+        }
     }
 
     @NonNull

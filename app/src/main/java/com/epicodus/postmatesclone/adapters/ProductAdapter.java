@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.epicodus.postmatesclone.R;
 import com.epicodus.postmatesclone.models.Product;
 import com.epicodus.postmatesclone.ui.CheckoutActivity;
+import com.epicodus.postmatesclone.ui.StoreActivity;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 
@@ -47,6 +49,9 @@ public class ProductAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
 
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        String role = currentUser.getString("role");
+
         if(convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.product_list_item, null);
             holder = new ViewHolder();
@@ -54,9 +59,17 @@ public class ProductAdapter extends BaseAdapter {
             holder.productNameLabel = (TextView) convertView.findViewById(R.id.productNameLabel);
             holder.priceNameLabel = (TextView) convertView.findViewById(R.id.productPriceLabel);
             holder.addItemButton = (Button) convertView.findViewById(R.id.addItemButton);
+            holder.editItemButton = (Button) convertView.findViewById(R.id.btnEditButton);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
+        }
+
+        if (role.equals("admin")) {
+            holder.editItemButton.setVisibility(View.VISIBLE);
+        }
+        else if (role.equals("customer")) {
+            holder.addItemButton.setVisibility(View.VISIBLE);
         }
 
         final Product product = mProducts.get(position);
@@ -70,6 +83,7 @@ public class ProductAdapter extends BaseAdapter {
                 Intent intent = new Intent(mContext, CheckoutActivity.class);
                 intent.putExtra("product", product.getProductName());
                 mContext.startActivity(intent);
+                //TODO: Add functionality for edit button
             }
         });
 
@@ -81,6 +95,7 @@ public class ProductAdapter extends BaseAdapter {
         TextView productNameLabel;
         TextView priceNameLabel;
         Button addItemButton;
+        Button editItemButton;
     }
 
 }
