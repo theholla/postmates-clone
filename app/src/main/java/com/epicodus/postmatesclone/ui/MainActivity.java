@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 final String username = mUsernameInput.getText().toString();
                 final String password = mPasswordInput.getText().toString();
 
-                // TODO: Make model for user, password should check if name and pw match to let them log in.
+                // TODO: Make model for user
 
                 ParseUser.logInInBackground(username, password, new LogInCallback() {
                     @Override
@@ -61,10 +61,10 @@ public class MainActivity extends AppCompatActivity {
                         if (user != null) {
                             goToMainPage();
                         } else if (user == null) {
-                            showNotAUserDialog();
+                            showErrorDialog(getString(R.string.username_password_error));
                         }
                         else {
-                            showErrorDialog();
+                            showErrorDialog(getString(R.string.generic_error));
                         }
                     }
                 });
@@ -87,27 +87,26 @@ public class MainActivity extends AppCompatActivity {
                 final String username = mUsernameInput.getText().toString();
                 final String password = mPasswordInput.getText().toString();
 
-                int radioChoice = mRadioGroup.getCheckedRadioButtonId();
-                RadioButton choice = (RadioButton) findViewById(radioChoice);
-                String role = choice.getText().toString();
+                if(! mRadioCompany.isChecked() && !mRadioCustomer.isChecked()) {
+                    showErrorDialog(getString(R.string.user_error));
+                }
+                else {
+                    int radioChoice = mRadioGroup.getCheckedRadioButtonId();
+                    RadioButton choice = (RadioButton) findViewById(radioChoice);
+                    String role = choice.getText().toString();
 
-                SharedPreferences.Editor editor = mSharedPreferences.edit();
-                editor.putString("role", role);
-                editor.apply();
 
-                registerUser(username, password, role);
-                ParseUser.logInInBackground(username, password);
+                    SharedPreferences.Editor editor = mSharedPreferences.edit();
+                    editor.putString("role", role);
+                    editor.apply();
+
+                    registerUser(username, password, role);
+                    ParseUser.logInInBackground(username, password);
+                }
             }
         });
     }
 
-    private void showNotAUserDialog() {
-        AlertDialog show = new AlertDialog.Builder(MainActivity.this)
-                .setTitle("Message")
-                .setMessage("Error: username or password wrong")
-                .setNeutralButton("OK", null)
-                .show();
-    }
 
     public void goToMainPage() {
         Intent intent = new Intent(this, StoreActivity.class);
@@ -118,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void registerUser(String username, String password, String role) {
         if (username.isEmpty() || password.isEmpty()) {
-            showErrorDialog();
+            showErrorDialog(getString(R.string.registration_text_error));
         } else {
             ParseUser newUser = getParseUser(username, password);
             newUser.put("role", role);
@@ -131,7 +130,9 @@ public class MainActivity extends AppCompatActivity {
                     if (e == null) {
                         // Success!
                         goToMainPage();
-                    } else showErrorDialog();
+                    } else {
+                        showErrorDialog(getString(R.string.registration_error));
+                    }
                 }
             });
         }
@@ -147,9 +148,9 @@ public class MainActivity extends AppCompatActivity {
         return newUser;
     }
 
-    private void showErrorDialog() {
+    private void showErrorDialog(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setMessage("This registration won't work for us.")
+        builder.setMessage(message)
                 .setTitle("Oops!")
                 .setPositiveButton(android.R.string.ok, null)
                 .create()

@@ -10,4 +10,9 @@
     <string name="title_activity_success">SuccessActivity</string>
     <string name="title_activity_company_login">Company Login</string>
     <string name="title_activity_company">Company Activity</string>
+    <string name="registration_error">This registration won\'t work for us.</string>
+    <string name="user_error">Please choose a user type.</string>
+    <string name="registration_text_error">Please fill in the registration fields</string>
+    <string name="username_password_error">Error: username or password wrong</string>
+    <string name="generic_error">Something went wrong</string>
 </resources>
