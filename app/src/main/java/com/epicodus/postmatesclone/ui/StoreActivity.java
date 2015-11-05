@@ -1,5 +1,6 @@
 package com.epicodus.postmatesclone.ui;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -41,8 +42,8 @@ public class StoreActivity extends ListActivity {
 
         // TODO: Add arraylist of company's products
 
-//        ParseUser currentUser = ParseUser.getCurrentUser();
-//        getRole(currentUser);
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        getRole(currentUser);
 
         //TODO: Fix when user is first created, role is found too slowly. Create new runnable?
 
@@ -79,4 +80,5 @@ public class StoreActivity extends ListActivity {
             // TODO: show all products but no add to cart option
         }
     }
+
 }

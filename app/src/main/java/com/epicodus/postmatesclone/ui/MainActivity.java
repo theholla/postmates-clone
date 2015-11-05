@@ -97,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
 
                 registerUser(username, password, role);
                 ParseUser.logInInBackground(username, password);
-//                goToMainPage();
             }
         });
     }
