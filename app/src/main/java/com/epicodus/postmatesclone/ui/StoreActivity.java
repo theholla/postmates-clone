@@ -1,7 +1,10 @@
 package com.epicodus.postmatesclone.ui;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +20,7 @@ import java.util.ArrayList;
 
 public class StoreActivity extends ListActivity {
 
+    private SharedPreferences mSharedPreferences;
     private Button mLogoutButton;
     private Button mAddProduct;
     private ArrayList<Product> mProducts;
@@ -27,6 +31,7 @@ public class StoreActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store);
 
+        mSharedPreferences = getApplicationContext().getSharedPreferences("postmatesapp", Context.MODE_PRIVATE);
         mLogoutButton = (Button) findViewById(R.id.logoutButton);
         mAddProduct = (Button) findViewById(R.id.btnAddProduct);
         mAddProduct.setVisibility(View.INVISIBLE);
@@ -38,18 +43,9 @@ public class StoreActivity extends ListActivity {
         // TODO: Add arraylist of company's products
 
         ParseUser currentUser = ParseUser.getCurrentUser();
-        String role = currentUser.getString("role");
+        getRole(currentUser);
 
-        if (role.equals("Company Account")) {
-            mAddProduct.setVisibility(View.VISIBLE);
-
-
-        } else if (role.equals("Personal Account")) {
-            // TODO: show all products
-        } else {
-            // TODO: show all products but no add to cart option
-        }
-
+        //TODO: Fix when user is first created, role is found too slowly. Create new runnable?
 
         mLogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,4 +66,19 @@ public class StoreActivity extends ListActivity {
             }
         });
     }
+
+    public void getRole(ParseUser currentUser) {
+        String role = mSharedPreferences.getString("role", null);
+                //currentUser.getString("role");
+
+        if (role.equals("Company Account")) {
+            mAddProduct.setVisibility(View.VISIBLE);
+
+        } else if (role.equals("Personal Account")) {
+            // TODO: show all products
+        } else {
+            // TODO: show all products but no add to cart option
+        }
+    }
+
 }
