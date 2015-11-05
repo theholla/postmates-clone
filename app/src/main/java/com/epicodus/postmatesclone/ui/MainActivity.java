@@ -1,7 +1,9 @@
 package com.epicodus.postmatesclone.ui;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +24,7 @@ import com.parse.SignUpCallback;
 
 public class MainActivity extends AppCompatActivity {
 
+    private SharedPreferences mSharedPreferences;
     private EditText mUsernameInput, mPasswordInput;
     private Button mLoginButton, mShowRegisterButton, mRegisterButton, mRegisterRoleButton;
     private RadioButton mRadioCustomer, mRadioCompany;
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Stetho.initializeWithDefaults(this);
 
+        mSharedPreferences = getApplicationContext().getSharedPreferences("postmatesapp", Context.MODE_PRIVATE);
         mUsernameInput = (EditText) findViewById(R.id.newUsername);
         mPasswordInput = (EditText) findViewById(R.id.newPassword);
         mLoginButton = (Button) findViewById(R.id.btnLogin);
@@ -87,9 +91,13 @@ public class MainActivity extends AppCompatActivity {
                 RadioButton choice = (RadioButton) findViewById(radioChoice);
                 String role = choice.getText().toString();
 
+                SharedPreferences.Editor editor = mSharedPreferences.edit();
+                editor.putString("role", role);
+                editor.apply();
+
                 registerUser(username, password, role);
                 ParseUser.logInInBackground(username, password);
-                goToMainPage();
+//                goToMainPage();
             }
         });
     }
