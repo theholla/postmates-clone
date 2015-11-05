@@ -42,10 +42,6 @@ public class MainActivity extends AppCompatActivity {
         mRadioCompany = (RadioButton) findViewById(R.id.radioCompany);
         mRadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
 
-        ParseUser currentUser = ParseUser.getCurrentUser();
-        if (currentUser != null) {
-            goToMainPage();
-        }
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,8 +102,8 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-    private void goToMainPage() {
-        Intent intent = new Intent(MainActivity.this, StoreActivity.class);
+    public void goToMainPage() {
+        Intent intent = new Intent(this, StoreActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
