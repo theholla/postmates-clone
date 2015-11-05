@@ -45,8 +45,6 @@ public class StoreActivity extends ListActivity {
         ParseUser currentUser = ParseUser.getCurrentUser();
         getRole(currentUser);
 
-        //TODO: Fix when user is first created, role is found too slowly. Create new runnable?
-
         mLogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +71,6 @@ public class StoreActivity extends ListActivity {
 
         if (role.equals("Company Account")) {
             mAddProduct.setVisibility(View.VISIBLE);
-
         } else if (role.equals("Personal Account")) {
             // TODO: show all products
         } else {
