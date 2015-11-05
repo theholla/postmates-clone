@@ -37,14 +37,6 @@
             android:value="1" />
 
         <activity
-            android:name=".ui.RegisterActivity"
-            android:label="@string/title_activity_register"
-            android:parentActivityName=".ui.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.postmatesclone.ui.MainActivity" />
-        </activity>
-        <activity
             android:name=".ui.AddProductActivity"
             android:label="@string/title_activity_add_product"
             android:parentActivityName=".ui.MainActivity" >
@@ -63,14 +55,6 @@
         <activity
             android:name=".ui.SuccessActivity"
             android:label="@string/title_activity_success" >
-        </activity>
-        <activity
-            android:name=".ui.CompanyLoginActivity"
-            android:label="@string/title_activity_company_login"
-            android:parentActivityName=".ui.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.postmatesclone.ui.MainActivity" />
         </activity>
     </application>
 

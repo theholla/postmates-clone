@@ -40,19 +40,61 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register"
-        android:id="@+id/btnRegisterPage"
-        android:layout_alignTop="@+id/btnLogin"
-        android:layout_alignLeft="@+id/btnLogin"
-        android:layout_alignStart="@+id/btnLogin"
-        android:visibility="invisible"/>
+        android:text="create an account"
+        android:id="@+id/btnShowRegister"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MAIN ACTIVITY"
+        android:text="Welcome to Postmates"
         android:id="@+id/mainText"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:textSize="30sp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="REGISTER"
+        android:id="@+id/btnRegister"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/btnLogin"
+        android:layout_below="@+id/btnLogin"
+        android:layout_alignRight="@+id/btnLogin"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:id="@+id/radioGroup"
+        android:layout_below="@+id/newPassword"
+        android:layout_above="@+id/btnShowRegister"
+        android:layout_toLeftOf="@+id/btnLogin"
+        android:layout_toStartOf="@+id/btnLogin">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Personal Account"
+            android:id="@+id/radioCustomer"
+            android:layout_above="@+id/btnLogin"
+            android:layout_alignLeft="@+id/newPassword"
+            android:layout_alignStart="@+id/newPassword"
+            android:checked="false"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Company Account"
+            android:id="@+id/radioCompany"
+            android:layout_centerVertical="true"
+            android:layout_alignLeft="@+id/radioCustomer"
+            android:layout_alignStart="@+id/radioCustomer"
+            android:checked="false"/>
+
+    </RadioGroup>
 
 </RelativeLayout>

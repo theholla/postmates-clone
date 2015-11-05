@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add"
-        android:id="@+id/addItemButton"
+        android:id="@+id/btnAddToCart"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
@@ -42,9 +42,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="$$"
         android:id="@+id/productPriceLabel"
-        android:layout_alignBottom="@+id/addItemButton"
-        android:layout_toLeftOf="@+id/addItemButton"
-        android:layout_toStartOf="@+id/addItemButton"
+        android:layout_alignBottom="@+id/btnAddToCart"
+        android:layout_toLeftOf="@+id/btnAddToCart"
+        android:layout_toStartOf="@+id/btnAddToCart"
         android:layout_marginRight="10dp"/>
 
     <Button

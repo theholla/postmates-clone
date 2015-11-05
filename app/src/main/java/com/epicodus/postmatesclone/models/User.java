@@ -25,5 +25,6 @@ public class User {
 
     public static User find(String username, String password) {
         //query parse
+        return null;
     }
 }

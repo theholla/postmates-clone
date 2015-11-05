@@ -40,10 +40,11 @@ public class StoreActivity extends ListActivity {
         ParseUser currentUser = ParseUser.getCurrentUser();
         String role = currentUser.getString("role");
 
-        if (role.equals("admin")) {
+        if (role.equals("Company Account")) {
             mAddProduct.setVisibility(View.VISIBLE);
 
-        } else if (role.equals("customer")) {
+
+        } else if (role.equals("Personal Account")) {
             // TODO: show all products
         } else {
             // TODO: show all products but no add to cart option

@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.epicodus.postmatesclone.R;
 import com.epicodus.postmatesclone.models.Product;
 import com.epicodus.postmatesclone.ui.CheckoutActivity;
-import com.epicodus.postmatesclone.ui.StoreActivity;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
@@ -58,17 +57,17 @@ public class ProductAdapter extends BaseAdapter {
             holder.companyNameLabel = (TextView) convertView.findViewById(R.id.companyName);
             holder.productNameLabel = (TextView) convertView.findViewById(R.id.productNameLabel);
             holder.priceNameLabel = (TextView) convertView.findViewById(R.id.productPriceLabel);
-            holder.addItemButton = (Button) convertView.findViewById(R.id.addItemButton);
+            holder.addItemButton = (Button) convertView.findViewById(R.id.btnAddToCart);
             holder.editItemButton = (Button) convertView.findViewById(R.id.btnEditButton);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        if (role.equals("admin")) {
+        if (role.equals("Company Account")) {
             holder.editItemButton.setVisibility(View.VISIBLE);
         }
-        else if (role.equals("customer")) {
+        else if (role.equals("Personal Account")) {
             holder.addItemButton.setVisibility(View.VISIBLE);
         }
 
