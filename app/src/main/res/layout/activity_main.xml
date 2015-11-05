@@ -42,11 +42,10 @@
         android:layout_height="wrap_content"
         android:text="Register"
         android:id="@+id/btnRegisterPage"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/btnRegisterCustomer"
-        android:layout_toStartOf="@+id/btnRegisterCustomer"
-        android:layout_marginRight="112dp"
-        android:layout_marginEnd="112dp"/>
+        android:layout_alignTop="@+id/btnLogin"
+        android:layout_alignLeft="@+id/btnLogin"
+        android:layout_alignStart="@+id/btnLogin"
+        android:visibility="invisible"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -55,16 +54,5 @@
         android:id="@+id/mainText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="request password reset"
-        android:id="@+id/txtResetPassword"
-        android:clickable="false"
-        android:linksClickable="true"
-        android:layout_below="@+id/btnLogin"
-        android:layout_toRightOf="@+id/btnRegisterPage"
-        android:layout_toEndOf="@+id/btnRegisterPage"/>
 
 </RelativeLayout>
