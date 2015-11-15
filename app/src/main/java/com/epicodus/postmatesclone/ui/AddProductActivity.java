@@ -36,7 +36,9 @@ public class AddProductActivity extends AppCompatActivity {
                 String productPriceString = mProductPrice.getText().toString().trim().replaceAll("[^\\w\\s]", "");
 
                 if (company.isEmpty() || productName.isEmpty() || productPriceString.isEmpty() ) {
-                    showErrorDialog();
+                    showErrorDialog("You are missing a required field. Please fill all fields.");
+                } else if (!isInteger(productPriceString)) {
+                    showErrorDialog("Please use only numbers for the price");
                 }
                 else {
                     int productPrice = Integer.parseInt(productPriceString);
@@ -49,9 +51,19 @@ public class AddProductActivity extends AppCompatActivity {
         });
     }
 
-    private void showErrorDialog() {
+    public static boolean isInteger(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        }
+        catch(Exception e) {
+            return false;
+        }
+    }
+
+    private void showErrorDialog(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(AddProductActivity.this);
-        builder.setMessage("You are missing a required field. Please fill all fields.")
+        builder.setMessage(message)
                 .setTitle("Oops!")
                 .setPositiveButton(android.R.string.ok, null)
                 .create()
