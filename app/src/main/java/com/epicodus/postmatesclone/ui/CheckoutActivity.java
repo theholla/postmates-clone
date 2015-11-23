@@ -17,7 +17,6 @@ import java.util.List;
 
 public class CheckoutActivity extends ListActivity {
 
-    //private ArrayList<Product> mOrder;
     private Product mProduct;
     private TextView displayProductName;
     private TextView mTotalPrice;
@@ -33,11 +32,8 @@ public class CheckoutActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
 
-        //ArrayList<Product> mOrder = new ArrayList<>();
-
         String product = getIntent().getStringExtra("product");
         mProduct = Product.find(product);
-        //mOrder.add(mProduct);
 
         Order order = new Order(mProduct);
         order.save();
